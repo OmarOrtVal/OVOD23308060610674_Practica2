@@ -1,6 +1,24 @@
-def main():
-    print("Hello from ovod23308060610674-practica2!")
+import flet as ft
 
-
-if __name__ == "__main__":
-    main()
+def main(page: ft.Page):
+    page.title="Contador flet"
+    page.vertical_alignment = ft.MainAxisAlignment.CENTER
+    txt_numero=ft.TextField(value="0",text_align=ft.TextAlign.RIGHT, width=100)
+    
+    def restar(e):
+        txt_numero.value=str(int(txt_numero.value)-1)
+    
+    def sumar(e):
+        txt_numero.value=str(int(txt_numero.value)+1)
+        
+    page.add(
+        ft.Row(
+            [
+                ft.IconButton(ft.Icons.REMOVE, on_click=restar),
+                txt_numero,
+                ft.IconButton(ft.Icons.ADD, on_click=sumar),
+            ],
+            alignment=ft.MainAxisAlignment.CENTER
+        )
+    )
+ft.app(target=main)
